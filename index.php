@@ -1,5 +1,5 @@
 <?php       
-    include('/views/head.html');
+    include('/views/head.php');
 
     /* Show all errors */ 
     ini_set('display_startup_errors', 1);
@@ -20,8 +20,21 @@
         echo "Host information: " . mysqli_get_host_info($conn) . PHP_EOL;
     }
 
-    /* Include content page after MySQL connection has been established */
-    include('/views/content.php');
+    /* Include correct page after MySQL connection has been established */
+    $page = $_GET["p"];
+    if ($page == "home" || $page == null) {
+         include('/views/content.php');
+    } elseif ($page == "posts") {
+        include('/views/pages.php');
+    } elseif ($page == "contact") {
+         include('/views/contact.php');
+    } elseif ($page == "login") {
+         include('/views/login.php');
+    } elseif ($page == "register") {
+        include('/views/register.php');
+    } else {
+        include('/views/404.html');
+    }
 
     /* Close Connection */
     mysqli_close($conn);
