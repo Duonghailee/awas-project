@@ -1,4 +1,4 @@
-<?php       
+<?php 
     include('/views/head.php');
 
     /* Show all errors */ 
@@ -28,10 +28,17 @@
         include('/views/pages.php');
     } elseif ($page == "contact") {
          include('/views/contact.php');
-    } elseif ($page == "login") {
+    } elseif ($page == "login" || $page == "Login") {
          include('/views/login.php');
     } elseif ($page == "register") {
         include('/views/register.php');
+    } elseif ($page == "Logout") {
+
+        /* Destroy session and redirect to index.php */
+        session_destroy();
+        header("Location: index.php");
+        die();
+        
     } else {
         include('/views/404.html');
     }
