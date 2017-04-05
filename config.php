@@ -6,10 +6,12 @@
    */
 
    /* MySQL connection */
-   $DB_NAME = "";
-   $DB_USERNAME = "";
+   $DB_NAME = "awasdb";
+   $DB_USERNAME = "root";
    $DB_PASSWORD = "";
-   $DB_HOST = "";
+   $DB_HOST = "127.0.0.1";
+
+   /* AWAS blog configuration */
 ?>
 
 
