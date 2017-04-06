@@ -1,7 +1,7 @@
 <?php 
     /* Show all errors */ 
-    ini_set('display_startup_errors', 0);
-    ini_set('display_errors', 0);
+    ini_set('display_startup_errors', 1);
+    ini_set('display_errors', 1);
     #error_reporting(E_ALL);
 
     include('/views/head.php');
@@ -22,7 +22,7 @@
     if ($page == "home" || $page == null) {
          include('/views/content.php');
     } elseif ($page == "posts") {
-        include('/views/pages.php');
+        include('/views/posts.php');
     } elseif ($page == "contact") {
          include('/views/contact.php');
     } elseif ($page == "login" || $page == "Login") {
