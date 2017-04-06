@@ -1,10 +1,10 @@
 <?php 
-    include('/views/head.php');
-
     /* Show all errors */ 
-    ini_set('display_startup_errors', 1);
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
+    ini_set('display_startup_errors', 0);
+    ini_set('display_errors', 0);
+    #error_reporting(E_ALL);
+
+    include('/views/head.php');
 
     /* Include generic config file */
     include('config.php');
@@ -15,9 +15,6 @@
         echo "Error: Unable to connect to MySQL." . PHP_EOL;
         echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
         echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    } else {
-        echo("Success: A proper connection to MySQL was made! The " . $DB_NAME . " database is great." . PHP_EOL);
-        echo "Host information: " . mysqli_get_host_info($conn) . PHP_EOL;
     }
 
     /* Include correct page after MySQL connection has been established */
@@ -32,13 +29,13 @@
          include('/views/login.php');
     } elseif ($page == "register") {
         include('/views/register.php');
-    } elseif ($page == "Logout") {
+    } elseif ($page == "logout") {
 
         /* Destroy session and redirect to index.php */
         session_destroy();
         header("Location: index.php");
         die();
-        
+
     } else {
         include('/views/404.html');
     }

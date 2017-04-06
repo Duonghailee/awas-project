@@ -2,12 +2,14 @@
     session_start();
 
     $userLogon = $_SESSION['loggedIn'];
-    echo $userLogon;
+    $username = $_SESSION['username'];
 
     if ($userLogon == "user_logged_in") {
-        $loglink = "Logout";
+        $loglink = "logout";
+        $loglinklabel = "Logout (Logged in as $username)";
     } else {
-        $loglink = "Login";
+        $loglink = "login";
+        $loglinklabel = "Login";
     }
 ?>
 <html>
@@ -22,5 +24,5 @@
         <a href="index.php?p=home">Home</a>
         <a href="index.php?p=posts">Posts</a>
         <a href="index.php?p=contact">Contact</a>
-        <a href="index.php?p=<?php echo $loglink ?>"><?php echo $loglink ?></a>
+        <a href="index.php?p=<?php echo $loglink ?>"><?php echo $loglinklabel ?></a>
     </div>

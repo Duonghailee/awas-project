@@ -19,23 +19,22 @@
                 
                 /* Create login succesfull session token */
                 $_SESSION['loggedIn'] = "user_logged_in";
+                $_SESSION['username'] = $username;
 
                 /* Redirect to index.php */
                 header("Location: index.php");
                 die();
             }
         }
-
-
     ?>
 
     <div class="login-page">
-    <div class="form">
-        <form class="login-form" action="index.php?p=login" method="post">
-        <input type="text" name="username" placeholder="username"/>
-        <input type="password" name="password" placeholder="password"/>
-        <button>login</button>
-        <p class="message">Not registered? <a href="index.php?p=register">Create an account</a></p>
+        <div class="form">
+            <form class="login-form" action="index.php?p=login" method="post">
+            <input type="text" name="username" placeholder="username"/>
+            <input type="password" name="password" placeholder="password"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="index.php?p=register">Create an account</a></p>
         </form>
     </div>
     </div>
