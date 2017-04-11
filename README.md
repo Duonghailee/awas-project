@@ -8,6 +8,6 @@ To run the project, you'll need to have Apache, MySQL and PHP installed on your 
 3. Start Apache, MySQL and PHP
 4. Point your browser to http://127.0.0.1 and click on "RESTORE DATABASE"
 
-To disable or enabled errors from showing, modify index.php and set error display to either 1 (enabled) or 0 (disabled):<br />
+To disable or enable errors from showing, modify index.php and set error display to either 1 (enabled) or 0 (disabled):<br />
 ini_set('display_startup_errors', 1);<br />
 ini_set('display_errors', 1);<br />
