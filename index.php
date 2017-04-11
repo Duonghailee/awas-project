@@ -1,10 +1,9 @@
 <?php 
     /* Show all errors */ 
-    ini_set('display_startup_errors', 1);
-    ini_set('display_errors', 1);
-    #error_reporting(E_ALL);
+    ini_set('display_startup_errors', 0);
+    ini_set('display_errors', 0);
 
-    include('/views/head.php');
+    include('views/head.php');
 
     /* Include generic config file */
     include('config.php');
@@ -20,15 +19,15 @@
     /* Include correct page after MySQL connection has been established */
     $page = $_GET["p"];
     if ($page == "home" || $page == null) {
-         include('/views/content.php');
-    } elseif ($page == "posts") {
-        include('/views/posts.php');
+         include('views/content.php');
+    } elseif ($page == "posts" || preg_match("/posts\&show\=\d/", $page)) {
+        include('views/posts.php');
     } elseif ($page == "contact") {
-         include('/views/contact.php');
+         include('views/contact.php');
     } elseif ($page == "login" || $page == "Login") {
-         include('/views/login.php');
+         include('views/login.php');
     } elseif ($page == "register") {
-        include('/views/register.php');
+        include('views/register.php');
     } elseif ($page == "logout") {
 
         /* Destroy session and redirect to index.php */
@@ -37,10 +36,10 @@
         die();
 
     } else {
-        include('/views/404.html');
+        include('views/404.html');
     }
 
     /* Close Connection */
     mysqli_close($conn);
-    include('/views/footer.html');
+    include('views/footer.html');
 ?>

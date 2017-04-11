@@ -126,7 +126,7 @@ ALTER TABLE `comments`
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`postid`);
 
 --
 -- Indexes for table `topics`
