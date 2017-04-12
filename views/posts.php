@@ -18,7 +18,7 @@
             }
 
             /* Get comments */
-            $sql = "SELECT author, message, date, users.username, comments.id FROM comments INNER JOIN users ON comments.author = users.id WHERE comments.post = $postID ORDER BY comments.id DESC";
+            $sql = "SELECT author, message, date, users.username, comments.id, post FROM comments INNER JOIN users ON comments.author = users.id WHERE comments.post = $postID";
 
             $result2 = mysqli_query($conn, $sql);
 
