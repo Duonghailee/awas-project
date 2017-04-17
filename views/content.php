@@ -41,6 +41,7 @@
             <div class="db-refresh">
                 <?php 
                 $status = $_GET["dbrestore"];
+				$text = "";
                 if ($status == "done") {
                     $text = "Database restored!";
                 }

@@ -9,15 +9,13 @@ PATCH  => Update
 DELETE => Delete
 Which actions are allowed, will be set within the given object that been requested.
 */
-
-
 //Ensure that only Method provided by the rest API can be used. Unsupported methods will be redirected to the mainpage.
 if ($_SERVER['REQUEST_METHOD'] == 'PUT' || 
 	$_SERVER['REQUEST_METHOD'] == 'GET' || 
 	$_SERVER['REQUEST_METHOD'] == 'PATCH' || 
 	$_SERVER['REQUEST_METHOD'] == 'DELETE'
 	) {
-		echo "DEBUG : REST.php > valid method used.\n";
+		//echo "DEBUG : REST.php > valid method used.\n";
 		// if there is no DB connection declared create one now. The REST modules need DB access.
 		if (!isset($conn)){
 			/* Include generic config file */

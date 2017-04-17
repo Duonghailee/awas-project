@@ -4,19 +4,22 @@
 
 $(document).ready(function(){
     $("#new_blog").click(function() {
-		
 		event.preventDefault();
 		$.ajax({
 			type:"PUT",
-			data:{'subject':$('#subject').val(),
-			'message':$('#message').val()
+			data:{
+				'subject':$('#subject').val(),
+				'author':$('#author').text(),
+				'topic':'1',
+				'message':$('#message').val()
 			},
 			url:'posts',
 			statusCode:{
-				403:$(location).attr('href', 'index.php')
+				// if a 403 occurs redirect to mainpage.
+				//403:$(location).attr('href', 'index.php?p=home&dbrestore=no')
 			}
 		}).success(function(data) {
-			alert(data);
+			$('#info').text(data);
 		}); 
 	});
 });

@@ -23,13 +23,38 @@ if ($resource_accessed[1] == "posts"
 	
 	// is a new Post to be placed? The method has to be PUT 
 	if ($_SERVER['REQUEST_METHOD'] == "PUT") {
-		echo "add new post";
-		 echo "this is a put request\n";
+		// read in the input placed by the user.
+		// At this point the input should be satanized. User input can not be trusted.
+		// Note: In this case we leave this out. The vulnerability is a flawed authentication at this state.
+		//       Formular fields should not show internal structure to the outside world.
 		parse_str(file_get_contents("php://input"),$post_vars);
-		echo $post_vars['subject']." as subject\n";
-		echo $post_vars['message']." as message\n";
-		
-		
+		// only if all fields provided the blog can be added.
+		if (isset($post_vars['author']) && is_numeric($post_vars['author'])
+			&& isset($post_vars['subject']) && strlen($post_vars['subject']) > 1
+			&& isset($post_vars['message']) && strlen($post_vars['message']) > 1
+			&& isset($post_vars['topic']) && is_numeric($post_vars['author'])){
+				
+			// at this point the input would  be filtered/sanatized.	
+			$author =  $post_vars['author'];
+			$subject = $post_vars['subject'];
+			$message = base64_encode($post_vars['message'] . PHP_EOL);
+			$topic = $post_vars['topic'];
+			// create the timestamp
+			$timestamp = date ("Y-m-d H:i:s", time());
+			
+			// create the insert query
+			$sql = "insert into posts (`author`, `subject`, `message`, `date`, `topic`) VALUES ('$author','$subject', '$message', '" . $timestamp . "',$topic)";
+			
+			if ($conn->query($sql) === TRUE){
+				http_response_code(200);
+				echo 'Your Blog entry has been added.';
+				exit;
+			} else  {
+				echo mysqli_error($conn) . "\n" . $sql;
+			}
+		}
+		echo 'Your blog could not be added!';
+		exit;
 		
 	// is a existing post to be edited/deleted? The method has to be either PATCH or DELETE.
 	} elseif ($_SERVER['REQUEST_METHOD'] == "PATCH"

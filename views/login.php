@@ -20,7 +20,7 @@
                 /* Create login succesfull session token */
                 $_SESSION['loggedIn'] = "user_logged_in";
                 $_SESSION['username'] = $username;
-
+				$_SESSION['userID'] = $resultset->fetch_row()[0];
                 /* Redirect to index.php */
                 header("Location: index.php");
                 die();

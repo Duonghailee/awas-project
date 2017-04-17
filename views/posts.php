@@ -58,14 +58,17 @@
 							<input type="button" value="Create new Post"/>
 						</a>
 			<?php } ?>
-        </div>
+			<div id="info"></div>
+		</div>
+		
     </div>
 
-<?php function create_new() { ?>
+<?php function create_new() {?>
 		<h1>Title: </h1>
 		<input type = "text" id="subject" placeholder="Your Title" size = '120'>
 		<h1>Topic:</h1>
 		<textarea rows ="25" cols = "122" id="message" placeholder="What do you want to tell the world??"></textarea><br><br>
+		<div id='author' style="display:none"><?php  echo $_SESSION['userID'];?></div>
 		<button id='new_blog'>Blog IT!</button>
 <?php }
 // expects the results for the blogs. The results will be read out and placed into the html frame for blogentries.
