@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT' ||
 	header("Location: index.php");
 }
 
-//exit;
+exit;
 
 echo $_SERVER['REQUEST_METHOD'];
 //echo $_SERVER['HTTP_REFERER'];

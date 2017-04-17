@@ -24,6 +24,11 @@ if ($resource_accessed[1] == "posts"
 	// is a new Post to be placed? The method has to be PUT 
 	if ($_SERVER['REQUEST_METHOD'] == "PUT") {
 		echo "add new post";
+		 echo "this is a put request\n";
+		parse_str(file_get_contents("php://input"),$post_vars);
+		echo $post_vars['subject']." as subject\n";
+		echo $post_vars['message']." as message\n";
+		
 		
 		
 	// is a existing post to be edited/deleted? The method has to be either PATCH or DELETE.
@@ -44,8 +49,6 @@ if ($resource_accessed[1] == "posts"
 			echo "DEBUG : Could not fetch the post selected. Might not exist yet. Found rows with specified ID ". $result->num_rows ;
 		}
 	}
-	
-	
 	// no need to run any further checks on other modules. The resource has been found.
 	exit;
 } else {

@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script type="text/javascript" src="script/login.js"></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script type="text/javascript" src="script/restConnector.js"></script>
+		
      </head>
 <body>
     <div class="topnav" id="myTopnav">

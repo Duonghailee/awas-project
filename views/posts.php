@@ -33,7 +33,7 @@
         <div class="content-main">
             <?php
 				if (isset($_GET['new'])){
-						
+					create_new();
 				} else {
 					while ($row = mysqli_fetch_assoc($result)) {
 						if (isset($result2)) {
@@ -61,52 +61,13 @@
         </div>
     </div>
 
-<?php
-
-function create_new() {
-	<form action="posts" method="put">
-	<h1></h1>
-	
-	<h3>Posted on <?php echo $row["date"] ?> by <?php echo $row["username"] ?> </h3>
-	
-	<?php echo base64_decode($row["message"]); ?>
-	<!-- Not looking for comments -->
-	<?php if (!isset($_GET["show"])) { ?> 
-	
-		<a href='index.php?p=posts&show=<?php echo $row["postid"] ?>'/>Comments</a> 
-	<?php } else {
-		/* Starting statement for comments field */  ?>
-		<div class='comments'><h3><b>Comments</b></h3>
-		<?php while ($row2 = mysqli_fetch_assoc($result2)) { ?>
-				<div class='singlecomment'>
-				<h3>Posted on <?php echo $row2["date"] ?> by <b> <?php echo $row2["username"] ?> </b></h3><p>
-				<?php echo $row2["message"]; ?>
-				</p></div>
-		<?php } ?>
-		<!-- Clsoing statement for comments field --> 
-		</div>
-		
-		<!-- Posting a new comment -->
-		<div class='newcomment'><h3><b>New comment</b></h3>
-		<?php 
-		if (!$_SESSION['loggedIn'] && !$_SESSION['username']) { ?>
-			ERROR: Please login in order to comment!
-		<?php } else { 
-			$username = $_SESSION["username"]; ?>
-			<p>Comment will be posted as:<b> <?php echo $username ?></b></p>
-				<form class="login-form" action="comment.php" method="post">
-					<textarea rows="4" cols="50" name="message"></textarea><br />
-					<input type="hidden" name="username" value="<?php echo $_SESSION["username"];?>" />
-					<input type="hidden" name="postid" value="<?php echo $_GET["show"];?>" />
-					<button>Comment</button>
-				 </form>
-			
-		<?php } ?>
-		</div>
-		<?php		
-	}
-	
-}
+<?php function create_new() { ?>
+		<h1>Title: </h1>
+		<input type = "text" id="subject" placeholder="Your Title" size = '120'>
+		<h1>Topic:</h1>
+		<textarea rows ="25" cols = "122" id="message" placeholder="What do you want to tell the world??"></textarea><br><br>
+		<button id='new_blog'>Blog IT!</button>
+<?php }
 // expects the results for the blogs. The results will be read out and placed into the html frame for blogentries.
 // parameters one and two are the resultdata to be used to print an existing blog.
 // if  the last param is set to true, an empty blog frame has to be shown to accept a new Blog as input to be stored into the db.
