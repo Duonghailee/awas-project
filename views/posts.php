@@ -50,7 +50,7 @@
         <div class="content-side">
 			<?php if (!$_SESSION['loggedIn'] && !$_SESSION['username']) { ?>
 						Want to place a post?</br>
-						<a href="views/login.php">
+						<a href="index.php?p=login">
 							<input type="button" value="Login here"/>
 						</a>
 			<?php } else { ?>
@@ -93,7 +93,7 @@ function print_blog_entry($row,$result2 = null) { ?>
 				<?php echo $row2["message"]; ?>
 				</p></div>
 		<?php } ?>
-		<!-- Clsoing statement for comments field --> 
+		<!-- Closing statement for comments field --> 
 		</div>
 		
 		<!-- Posting a new comment -->
