@@ -16,28 +16,39 @@ Note! At this point the vulnerabilitzy A7 will take place. The authentication wi
 
 */
 
-if ($_SERVER['REQUEST_METHOD'] == ""){
+// Run the module only if the "posts" resource has been called. In either resource fields it should state "posts".
+if ($resource_accessed[1] == "posts" 
+	|| $resource_accessed[0] == "posts") {
+	// at this point we know that we have to interact with posts. 
 	
-}
-
-
-
-if ($_SERVER['REQUEST_METHOD'] == "PUT") {
+	// is a new Post to be placed? The method has to be PUT 
+	if ($_SERVER['REQUEST_METHOD'] == "PUT") {
+		echo "add new post";
+		
+		
+	// is a existing post to be edited/deleted? The method has to be either PATCH or DELETE.
+	} elseif ($_SERVER['REQUEST_METHOD'] == "PATCH"
+			  || $_SERVER['REQUEST_METHOD'] == "DELETE") {
+		// only allow Numerics to be entered as ID for a post.		  
+		if (!is_numeric($resource_accessed[1])) {
+			echo "is not numeric!";
+		}
+		// query the DB for the post.
+		$sql = "SELECT postid from posts where postid = " . $resource_accessed[1];
+		$result = mysqli_query($conn, $sql);
+		if (!$result) {
+			die(mysqli_error($conn));
+		} elseif ($result->num_rows == 1) {
+			echo "Post exists";			
+		} else {
+			echo "DEBUG : Could not fetch the post selected. Might not exist yet. Found rows with specified ID ". $result->num_rows ;
+		}
+	}
 	
-	echo "add new post";
-} elseif ($_SERVER['REQUEST_METHOD'] == "PATCH") {
-	echo "edit post";
-} elseif ($_SERVER['REQUEST_METHOD'] == "DELETE") {
-	echo "delete post";
-} else {
 	
+	// no need to run any further checks on other modules. The resource has been found.
 	exit;
+} else {
+	echo "not for this module";
 }
-
-
-//exit;
-
-
-
-
 ?>
