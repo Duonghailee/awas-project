@@ -23,6 +23,7 @@ if ($resource_accessed[1] == "posts"
 	
 	// is a new Post to be placed? The method has to be PUT 
 	if ($_SERVER['REQUEST_METHOD'] == "PUT") {
+
 		// read in the input placed by the user.
 		// At this point the input should be satanized. User input can not be trusted.
 		// Note: In this case we leave this out. The vulnerability is a flawed authentication at this state.
@@ -37,7 +38,7 @@ if ($resource_accessed[1] == "posts"
 			// at this point the input would  be filtered/sanatized.	
 			$author =  $post_vars['author'];
 			$subject = $post_vars['subject'];
-			$message = base64_encode($post_vars['message'] . PHP_EOL);
+			$message = base64_encode("<p>" . $post_vars['message'] . "</p>" . PHP_EOL);
 			$topic = $post_vars['topic'];
 			// create the timestamp
 			$timestamp = date ("Y-m-d H:i:s", time());
