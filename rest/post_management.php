@@ -62,15 +62,26 @@ if ($resource_accessed[1] == "posts"
 			  || $_SERVER['REQUEST_METHOD'] == "DELETE") {
 		// only allow Numerics to be entered as ID for a post.		  
 		if (!is_numeric($resource_accessed[1])) {
-			echo "is not numeric!";
+			echo "is not numeric!" . $resource_accessed[1];
 		}
 		// query the DB for the post.
-		$sql = "SELECT postid from posts where postid = " . $resource_accessed[1];
+		$sql = "SELECT * from posts where postid = " . $resource_accessed[1];
 		$result = mysqli_query($conn, $sql);
 		if (!$result) {
 			die(mysqli_error($conn));
 		} elseif ($result->num_rows == 1) {
-			echo "Post exists";			
+			if ($_SERVER['REQUEST_METHOD'] == "DELETE"){
+				$sql = "delete from posts where postid = " . $resource_accessed[1];
+				if ($conn->query($sql) === TRUE){
+					http_response_code(200);
+					echo 'The selected Blog has been deleted.';
+					exit;
+				} else  {
+					echo mysqli_error($conn) . "\n" . $sql;
+				}
+			} elseif ($_SERVER['REQUEST_METHOD'] == "PATCH") {
+				
+			}
 		} else {
 			echo "DEBUG : Could not fetch the post selected. Might not exist yet. Found rows with specified ID ". $result->num_rows ;
 		}

@@ -3,6 +3,19 @@
 */
 
 $(document).ready(function(){
+	$(".killer").click(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type:"DELETE",
+			url:'posts/' + event.target.id,
+			statusCode:{
+				// if a 403 occurs redirect to mainpage.
+				//403:$(location).attr('href', 'index.php?p=home&dbrestore=no')
+			}
+		}).success(function(data) {
+			$('#info').text(data);
+		}); 
+	});
     $("#new_blog").click(function() {
 		event.preventDefault();
 		$.ajax({
@@ -16,7 +29,7 @@ $(document).ready(function(){
 			url:'posts',
 			statusCode:{
 				// if a 403 occurs redirect to mainpage.
-				//403:$(location).attr('href', 'index.php?p=home&dbrestore=no')
+				403:$(location).attr('href', 'index.php?p=home&dbrestore=no')
 			}
 		}).success(function(data) {
 			$('#info').text(data);

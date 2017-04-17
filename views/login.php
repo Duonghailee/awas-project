@@ -7,8 +7,7 @@
         if ($username && $password) {
             $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password';";
             $result = mysqli_multi_query($conn, $sql);
-            echo $sql;
-
+           
             if (!$result) {
                 die(mysqli_error($conn));
             }
@@ -16,7 +15,6 @@
             $resultset = mysqli_store_result($conn);
 
             if (mysqli_num_rows($resultset) > 0) {
-                
                 /* Create login succesfull session token */
                 $_SESSION['loggedIn'] = "user_logged_in";
                 $_SESSION['username'] = $username;

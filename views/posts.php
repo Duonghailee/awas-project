@@ -57,7 +57,7 @@
 						<a href="index.php?p=posts&new">
 							<input type="button" value="Create new Post"/>
 						</a>
-			<?php } ?>
+			<?php } ?>			
 			<div id="info"></div>
 		</div>
 		
@@ -80,6 +80,8 @@ function print_blog_entry($row,$result2 = null) { ?>
 	<h3>Posted on <?php echo $row["date"] ?> by <?php echo $row["username"] ?> </h3>
 	
 	<?php echo base64_decode($row["message"]); ?>
+	
+	
 	<!-- Not looking for comments -->
 	<?php if (!isset($_GET["show"])) { ?> 
 	
