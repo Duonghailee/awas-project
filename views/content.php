@@ -33,6 +33,34 @@
                 something'; TRUNCATE TABLE users#</p></div>
                 </p>
             </div>
+			<div class="content-vulnerability">
+                <h3><b>A7-Missing Function Level Access Control</b></h3>
+                <p>A new developer joined the team. As new member he wasn`t familiar with the architecture used to provide the blog to the users. With a lot of new idead and an enthusiastic manner he jumped in and started coding. He provided a new way to manage the blogs. The other developers have never worked with this technology and aren`t able to understand what is goin on and how it works, but it does (somehow). What they all don`t know is that the new code left the blog with a flaw in access control.<p>
+                <p>Target is to: <br />
+                - Determine how blog entries are added to the database</br >
+                - Try to post a blog without being logged in.
+				- Can you post a blog entry with another username
+				<p>
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintB1') .style.display=='none') {document.getElementById('hintB1') .style.display=''}else{document.getElementById('hintB1') .style.display='none'}">First hint</button>
+                <div id="hintB1" style="display:none"><p>How are the inputs of the formular send to the server? Via URL, POST?</p></div>
+                </p>
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintB2') .style.display=='none') {document.getElementById('hintB2') .style.display=''}else{document.getElementById('hintB2') .style.display='none'}">Second hint</button>
+                <div id="hintB2" style="display:none"><p>How many inputs are visible to you? How many inputs does a blog consist of? Where do they come from? Inspect the form for new Blog entries in more detail.</p></div>
+                </p>
+				</p>
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintB3') .style.display=='none') {document.getElementById('hintB3') .style.display=''}else{document.getElementById('hintB3') .style.display='none'}">Third hint</button>
+                <div id="hintB3" style="display:none"><p>As you might have noticed, the URL is not generating a 403. This tells you that there is some kind of URL mapping taking place. This is a hint that the webapp might use some sort of API. In this case it is a REST API. Try to figure out how resources can be accessed by a REST API.</p></div>
+                </p>
+				
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solution') .style.display=='none') {document.getElementById('solution') .style.display=''}else{document.getElementById('solution') .style.display='none'}">Display solution</button>
+                <div id="solution" style="display:none"><p>
+				
+				</br>
+                <br />
+                Similarly users table can be dropped by using this as a password during the login process:<br />
+                something'; TRUNCATE TABLE users#</p></div>
+                </p>
+            </div>
             </div>
         <div class="content-side">
             <h1>Database restore</h1>
