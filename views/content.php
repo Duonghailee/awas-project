@@ -12,7 +12,8 @@
             - A1-Injection </br>
             - A3-Cross Site Scripting (XSS) </br>
             - A6-Sensitive Data Exposure </br>
-            - A7-Missing Function Level Access Control </br></p>
+            - A7-Missing Function Level Access Control </br>
+            - 10-Unvalidated Redirects and Forwards</p>
             <div class="content-vulnerability">
                 <h3><b>A1-Injection</b></h3>
                 <p>The developers of the application aren't familiar with the concept of SQL injection and as a result most of the database queries are vulnerable to SQL injection. With SQL injection, it is possible to gain access to sensitive information or cause damage to the content of the database.<p>
