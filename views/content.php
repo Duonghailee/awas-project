@@ -50,12 +50,12 @@
                 </p>
 				</p>
                 <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintB3') .style.display=='none') {document.getElementById('hintB3') .style.display=''}else{document.getElementById('hintB3') .style.display='none'}">Third hint</button>
-                <div id="hintB3" style="display:none"><p>As you might have noticed, the URL is not generating a 403. This tells you that there is some kind of URL mapping taking place. This is a hint that the webapp might use a REST API. Try to figure out how resources can be accessed by a REST API.</p></div>
+                <div id="hintB3" style="display:none"><p>As you might have noticed, the URL is not generating a 4XX. This tells you that there is some kind of URL mapping taking place. This is a hint that the webapp might use a REST API. Try to figure out how resources can be accessed by a REST API.</p></div>
                 </p>
 				
                 <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solutionB') .style.display=='none') {document.getElementById('solutionB') .style.display=''}else{document.getElementById('solutionB') .style.display='none'}">Display solution</button>
                 <div id="solutionB" style="display:none"><p>
-				
+				The webapp is using a REST API to enter new Blog entries. The input mask is only visible when logged in. But the REST API can be accessed directly by using POST with the matching Method allowing to place a new Blog entry. The Method to be used is PUT. The fields to be filled are subject and message. Which can be obtained by looking into the source code of the create form. Now a PUT request has to be forged by using a tool like Burp Suite Repeater or Postman. The Request won´t be checked for a valid Session and will accept the input placed by the request.
 				</p></div>
                 </p>
             </div>
