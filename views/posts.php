@@ -78,8 +78,9 @@ function print_blog_entry($row,$result2 = null) { ?>
 	<h1> <?php echo $row['subject'] ?></h1>
 	
 	<h3>Posted on <?php echo $row["date"] ?> by <?php echo $row["username"] ?> </h3>
+	<?php 
 	
-	<?php echo base64_decode($row["message"]); ?>
+	echo htmlspecialchars_decode(base64_decode($row["message"]));?>
 	
 	
 	<!-- Not looking for comments -->

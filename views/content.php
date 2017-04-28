@@ -59,6 +59,39 @@
 				</p></div>
                 </p>
             </div>
+			<div class="content-vulnerability">
+				<h3><b>A3-Cross Site Scripting (XSS)</b></h3>
+                <p>The new developer who joined the team also is aware of XSS. As he implemented the new stuff to the blog he also emplaced some countermeasures for XSS. 
+				He added some features to the workflow that is used to enter a new Blog entry. 
+				<p>Target is to: <br />
+                - Determine what feature is used / How is it done?</br >
+                - Find a way to evade this feature</br >
+				- Try to place a malicous code sample into a new Blog, i.e. a link
+				<p>
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintC1') .style.display=='none') {document.getElementById('hintC1') .style.display=''}else{document.getElementById('hintC1') .style.display='none'}">First hint</button>
+                <div id="hintC1" style="display:none"><p>Which characters or parts of the input are missing when you enter "some" characters?</p></div>
+                </p>
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintC2') .style.display=='none') {document.getElementById('hintC2') .style.display=''}else{document.getElementById('hintC2') .style.display='none'}">Second hint</button>
+                <div id="hintC2" style="display:none"><p>Remember Lab 10. Its about the same idea to place the code into a Webapp that allows users to place content into fields that will be stored into a database. Now you need to figure out how to overcome the obstacle placed by the developer. What kind of satinization/filtering is used? Burp Suite Decoder might help.</p></div>
+                </p>
+				</p>
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintC3') .style.display=='none') {document.getElementById('hintC3') .style.display=''}else{document.getElementById('hintC3') .style.display='none'}">Third hint</button>
+                <div id="hintC3" style="display:none"><p>The developer uses character based filtering and replaces the opening and closing tags with empty strings. Therefore you are not able to enter "&lt;" and "&gt;" tags. Try to use the Burp Suite to prepare the code you want to hide from the filtering.</p></div>
+                </p>
+				
+                <p><button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solutionC') .style.display=='none') {document.getElementById('solutionC') .style.display=''}else{document.getElementById('solutionC') .style.display='none'}">Display solution</button>
+                <div id="solutionC" style="display:none"><p>
+				<p>To get past the filtering, you have to use the Decoder module or other tool to encode in a manner that it won`t match with the replace pattern used. </br>
+				In this case two steps are used. First is to replace the opening and closing tags of the link '<' and '>' with ther HTML code &amp;lt; and &amp;gt;</p>  
+				<p>In example: <span style="color:red">&amp;lt;</span>a href='http://heise.de'<span style="color:red">&amp;gt;</span>Heise<span style="color:red">&amp;lt;</span>/a<span style="color:red">&amp;gt;</span></p>
+				<p>This line will be then URL Encoded to ensure it wont get in trouble with all the special chars in it.</br>
+				It will look something like this afterwards:
+				<p>%26%6c%74%3b%61%20%68%72%65%66%3d%27%68%74%74%70%3a%2f%2f%68%65%69%73%65%2e%64%65%27%26%67%74%3b%48%65%69%73%65%26%6c%74%3b%2f%61%26%67%74%3b</p>
+				<p>By posting this line into a blog a link to heise will be visible to the users. The Link could now do more than just link to heise.</p>
+				</p></div>
+                </p>
+			
+			</div>
             </div>
         <div class="content-side">
             <h1>Database restore</h1>
