@@ -142,8 +142,8 @@
       <h3><b>A10- Unvalidated Redirects and Forwards </b></h3>
       <p>The developer want to build a vulnerabilities based on simple idea of chapter 11, using path travelsar </p>
       <p>Target is to:
-        <br /> - Gain access to database where all created account are created, including also admin account.</br>
-        - actual directory of storing index.php</p>
+        <br /> - Gain access to admin panel which stores the blog's admin account.</br>
+        - steal and modify admin account </p>
       <p>
         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A10') .style.display=='none') {document.getElementById('hint_A10') .style.display=''}else{document.getElementById('hint_A10') .style.display='none'}">Hint</button>
         <div id="hint_A10" style="display:none">
@@ -153,7 +153,7 @@
       <p>
         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solution_A10') .style.display=='none') {document.getElementById('solution_A10') .style.display=''}else{document.getElementById('solution_A10') .style.display='none'}">Display solution</button>
         <div id="solution_A10" style="display:none">
-          <p>Try using ?file=../ or any encode characters together to discover secret directory</p>
+          <p>Try using ?p=../ or any encode characters together to discover secret directory</p>
         </div>
       </p>
     </div>
