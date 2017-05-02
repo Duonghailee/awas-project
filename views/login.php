@@ -1,10 +1,19 @@
     <?php
 
+        // Include logger function
+        include("././logger.php");
+
         /* Perform login routine */
         $username = $_POST["username"];
-        $password = $_POST["password"];
+        $password = md5($_POST["password"]);
 
         if ($username && $password) {
+
+            // Log attempted login
+            $timestamp = date(DATE_RFC2822);
+            logLoginAttempts($timestamp, $username, $password);
+
+            // Perform login routine
             $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password';";
             $result = mysqli_multi_query($conn, $sql);
            

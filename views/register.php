@@ -2,7 +2,7 @@
 
         /* Perform register routine */
         $username = $_POST["username"];
-        $password = $_POST["password"];
+        $password = md5($_POST["password"]);
         $email = $_POST["email"];
 
         if ($username && $password && $email) {

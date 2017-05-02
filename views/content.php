@@ -157,6 +157,39 @@
         </div>
       </p>
     </div>
+      <div class="content-vulnerability">
+      <h3><b>A6-Sensitive Data Exposure</b></h3>
+      <p>As a result of recent DDoS attacks, the developers have implemented a logging feature to write a log file to analyze malicious login attemps and their sources. However, the log files expose sensitive information and the implementation has not followed the best practices by preventing access from untrusted sources.</p>
+      <p>Target is to:
+        <br /> - Gain access to the log files</br>
+        - Use information contained in the log files to gain access to admin account</p>
+      <p>
+        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A6') .style.display=='none') {document.getElementById('hint_A6') .style.display=''}else{document.getElementById('hint_A6') .style.display='none'}">First hint</button>
+        <div id="hint_A6" style="display:none">
+          <p>The logs are accessible with browser by finding the correct URL for the log files.</p>
+        </div>
+      </p>
+      <p>
+        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A6_2') .style.display=='none') {document.getElementById('hint_A6_2') .style.display=''}else{document.getElementById('hint_A6_2') .style.display='none'}">Second hint</button>
+        <div id="hint_A6_2" style="display:none">
+          <p>Logs are generated daily and php function date("Ymd"); is used to generate the log files. Files are stored with a suffix .log.</p>
+        </div>
+      </p>
+      <p>
+      <p>
+        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A6_3') .style.display=='none') {document.getElementById('hint_A6_3') .style.display=''}else{document.getElementById('hint_A6_3') .style.display='none'}">Third hint</button>
+        <div id="hint_A6_3" style="display:none">
+          <p>Access log file by figuring out the output of date("Ymd"); function for a given day. 10th of May 2017 would be 20171002 and by adding .log suffix we get 20170502.log. Log files are stored in /logs/ folder. Figure out from the contents of the log file on how to access admin account. If you can see anything, try different dates!</p>
+        </div>
+      </p>
+      <p>
+        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solution_A6') .style.display=='none') {document.getElementById('solution_A6') .style.display=''}else{document.getElementById('solution_A6') .style.display='none'}">Display solution</button>
+        <div id="solution_A6" style="display:none">
+          <p>The log files contained in /logs/ directory contain md5 hashes of passwords for the logon attempts. The password used for admin account is so weak it should be possible to find the matching plaintext for the md5 ciphertext from any rainbow table around the internet (try Googling "md5 rainbow table")</p>
+        </div>
+      </p>
+    </div>
+  </div>
   </div>
 
   <div class="content-side">

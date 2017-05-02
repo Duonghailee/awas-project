@@ -26,6 +26,5 @@
     <div class="topnav" id="myTopnav">
         <a href="index.php?p=home">Home</a>
         <a href="index.php?p=posts">Posts</a>
-        <a href="index.php?p=contact">Contact</a>
         <a href="index.php?p=<?php echo $loglink ?>"><?php echo $loglinklabel ?></a>
     </div>
