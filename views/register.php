@@ -1,9 +1,19 @@
         <?php
 
         /* Perform register routine */
-        $username = $_POST["username"];
-        $password = md5($_POST["password"]);
-        $email = $_POST["email"];
+        $username =test_input($_POST["username"]);
+        $password = test_input(md5($_POST["password"]));
+        $email = test_input($_POST["email"]);
+
+
+        // adding extra testing for input form to avoid XSS 
+        function test_input($value){
+            $value = trim($value);
+            $value = stripslashes($value);
+            $value = htmlspecialchars($value);
+        return $value;
+
+        }
 
         if ($username && $password && $email) {
             $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
