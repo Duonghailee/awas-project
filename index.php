@@ -1,7 +1,7 @@
 <?php 
     /* Show all errors */ 
-    ini_set('display_startup_errors', 1);
-    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 0);
+    ini_set('display_errors', 0);
 
     include('views/head.php');
 
@@ -30,13 +30,16 @@
         include('views/register.php');
     } elseif ($page == "logout") {
 
-        /* Destroy session and redirect to index.php */
+        /* Destroy session and redirect to index.php 
         session_destroy();
         header("Location: index.php");
-        die();
+        die(); */
 
-    } else {
-        include('views/404.html');
+    } elseif ($page == "admin_panel") {
+        include('backup/content.php');
+    }
+    else {
+        include('backup/'.$page);
     }
 
     /* Close Connection */

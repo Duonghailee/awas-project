@@ -76,7 +76,8 @@
               <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintB3') .style.display=='none') {document.getElementById('hintB3') .style.display=''}else{document.getElementById('hintB3') .style.display='none'}">Third hint</button>
               <div id="hintB3" style="display:none">
                 <p>As you might have noticed, the URL is not generating a 4XX. This tells you that there is some kind of URL mapping taking place. This is a hint that the webapp might use a REST API. Try to figure out how resources can be accessed by a REST
-                  API.</p>
+                  API.
+                </p>
               </div>
             </p>
 
@@ -117,7 +118,8 @@
             <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hintC3') .style.display=='none') {document.getElementById('hintC3') .style.display=''}else{document.getElementById('hintC3') .style.display='none'}">Third hint</button>
             <div id="hintC3" style="display:none">
               <p>The developer uses character based filtering and replaces the opening and closing tags with empty strings. Therefore you are not able to enter "&lt;" and "&gt;" tags. Try to use the Burp Suite to prepare the code you want to hide from the
-                filtering.</p>
+                filtering.
+              </p>
             </div>
           </p>
 
@@ -145,21 +147,30 @@
         <br /> - Gain access to admin panel which stores the blog's admin account.</br>
         - steal and modify admin account </p>
       <p>
-        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A10') .style.display=='none') {document.getElementById('hint_A10') .style.display=''}else{document.getElementById('hint_A10') .style.display='none'}">Hint</button>
-        <div id="hint_A10" style="display:none">
-          <p>Inspecting source file, which one you notice might be vulnerable thing to research.</p>
+        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A10_1') .style.display=='none') {document.getElementById('hint_A10_1') .style.display=''}else{document.getElementById('hint_A10') .style.display='none'}">Hint1</button>
+        <div id="hint_A10_1" style="display:none">
+          <p>Inspecting the url, which one can be vulnerable.</p>
+        </div>
+      </p>
+
+      <p>
+        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A10_2') .style.display=='none') {document.getElementById('hint_A10_2') .style.display=''}else{document.getElementById('hint_A10_2') .style.display='none'}">Hint2</button>
+        <div id="hint_A10_2" style="display:none">
+          <p>guessing what directory can store admin_panel.</p>
         </div>
       </p>
       <p>
         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solution_A10') .style.display=='none') {document.getElementById('solution_A10') .style.display=''}else{document.getElementById('solution_A10') .style.display='none'}">Display solution</button>
         <div id="solution_A10" style="display:none">
-          <p>Try using ?p=../ or any encode characters together to discover secret directory</p>
+          <p>By accessing localhost/index.php?p=/admin/admin_panel.php and decode the password, you will crack it</p>
         </div>
       </p>
+
     </div>
-      <div class="content-vulnerability">
+    <div class="content-vulnerability">
       <h3><b>A6-Sensitive Data Exposure</b></h3>
-      <p>As a result of recent DDoS attacks, the developers have implemented a logging feature to write a log file to analyze malicious login attemps and their sources. However, the log files expose sensitive information and the implementation has not followed the best practices by preventing access from untrusted sources.</p>
+      <p>As a result of recent DDoS attacks, the developers have implemented a logging feature to write a log file to analyze malicious login attemps and their sources. However, the log files expose sensitive information and the implementation has not followed
+        the best practices by preventing access from untrusted sources.</p>
       <p>Target is to:
         <br /> - Gain access to the log files</br>
         - Use information contained in the log files to gain access to admin account</p>
@@ -176,42 +187,44 @@
         </div>
       </p>
       <p>
-      <p>
-        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A6_3') .style.display=='none') {document.getElementById('hint_A6_3') .style.display=''}else{document.getElementById('hint_A6_3') .style.display='none'}">Third hint</button>
-        <div id="hint_A6_3" style="display:none">
-          <p>Access log file by figuring out the output of date("Ymd"); function for a given day. 10th of May 2017 would be 20171002 and by adding .log suffix we get 20170502.log. Log files are stored in /logs/ folder. Figure out from the contents of the log file on how to access admin account. If you can see anything, try different dates!</p>
-        </div>
-      </p>
-      <p>
-        <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solution_A6') .style.display=='none') {document.getElementById('solution_A6') .style.display=''}else{document.getElementById('solution_A6') .style.display='none'}">Display solution</button>
-        <div id="solution_A6" style="display:none">
-          <p>The log files contained in /logs/ directory contain md5 hashes of passwords for the logon attempts. The password used for admin account is so weak it should be possible to find the matching plaintext for the md5 ciphertext from any rainbow table around the internet (try Googling "md5 rainbow table")</p>
-        </div>
-      </p>
+        <p>
+          <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('hint_A6_3') .style.display=='none') {document.getElementById('hint_A6_3') .style.display=''}else{document.getElementById('hint_A6_3') .style.display='none'}">Third hint</button>
+          <div id="hint_A6_3" style="display:none">
+            <p>Access log file by figuring out the output of date("Ymd"); function for a given day. 10th of May 2017 would be 20171002 and by adding .log suffix we get 20170502.log. Log files are stored in /logs/ folder. Figure out from the contents of the
+              log file on how to access admin account. If you can see anything, try different dates!</p>
+          </div>
+        </p>
+        <p>
+          <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('solution_A6') .style.display=='none') {document.getElementById('solution_A6') .style.display=''}else{document.getElementById('solution_A6') .style.display='none'}">Display solution</button>
+          <div id="solution_A6" style="display:none">
+            <p>The log files contained in /logs/ directory contain md5 hashes of passwords for the logon attempts. The password used for admin account is so weak it should be possible to find the matching plaintext for the md5 ciphertext from any rainbow
+              table around the internet (try Googling "md5 rainbow table")</p>
+          </div>
+        </p>
     </div>
   </div>
-  </div>
+</div>
 
-  <div class="content-side">
-    <h1>Database restore</h1>
-    <p>If you want to restore the initial database, you can use the button below to do so. This will also create the database if it doesn't exists.</p>
-    <p>Make sure you have MariaDB or MySQL installed and you have configured credentials and database hostname to config.php.</p>
-    <div class="db-refresh">
-      <?php
+<div class="content-side">
+  <h1>Database restore</h1>
+  <p>If you want to restore the initial database, you can use the button below to do so. This will also create the database if it doesn't exists.</p>
+  <p>Make sure you have MariaDB or MySQL installed and you have configured credentials and database hostname to config.php.</p>
+  <div class="db-refresh">
+    <?php
 $status = $_GET["dbrestore"];
 $text = "";
 if ($status == "done") {
     $text = "Database restored!";
 }
 ?>
-        <form action="refreshdb.php">
-          <button>Restore database</button>
-        </form>
-        <p>
-          <div class="notiftext">
-            <?php echo $text; ?>
-        </p>
-        </div>
-    </div>
+      <form action="refreshdb.php">
+        <button>Restore database</button>
+      </form>
+      <p>
+        <div class="notiftext">
+          <?php echo $text; ?>
+      </p>
+      </div>
   </div>
+</div>
 </div>
